@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Main from './screens/Main';
+import ViewStatus from './screens/ViewStatus';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,33 @@ const Routes = () => {
             headerStyle: {backgroundColor: '#1A1A1A'},
             headerTransparent: false,
             headerTitle: 'WaSaver',
+            headerTitleAlign: 'center',
+            headerTitleStyle: {color: 'white'},
+            headerLeft: () => (
+              <TouchableOpacity
+                onPress={() => {
+                  Linking.openURL('https://geeknote.devluar.com/ajuda');
+                }}>
+                <Icon name="help" size={30} color="#fff" />
+              </TouchableOpacity>
+            ),
+            headerRight: () => (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('Config');
+                }}>
+                <Icon name="settings" size={30} color="#fff" />
+              </TouchableOpacity>
+            ),
+          })}
+        />
+        <Stack.Screen
+          name="ViewStatus"
+          component={ViewStatus}
+          options={({navigation}) => ({
+            headerStyle: {backgroundColor: '#1A1A1A'},
+            headerTransparent: false,
+            headerTitle: 'Status',
             headerTitleAlign: 'center',
             headerTitleStyle: {color: 'white'},
             headerLeft: () => (
